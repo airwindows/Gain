@@ -104,9 +104,8 @@ bool PluginProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
     return true;
   #else
     // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
+    // In this metering code we only support stereo.
+    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
 
     // This checks if the input layout matches the output layout
@@ -136,19 +135,110 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     // this code if your algorithm always overwrites all the output channels.
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
-
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    
+    
+    
+    
+  /*  UIToAudioMessage uim;
+    while (uiToAudio.pop(uim))
     {
-        auto* channelData = buffer.getWritePointer (channel);
-        juce::ignoreUnused (channelData);
-        // ..do something to the data...
+        switch (uim.what)
+        {
+        case UIToAudioMessage::NEW_VALUE:
+            params[uim.which]->setValueNotifyingHost(params[uim.which]->convertTo0to1(uim.newValue)); break;
+        case UIToAudioMessage::BEGIN_EDIT:
+            break;
+        case UIToAudioMessage::END_EDIT:
+            break;
+        }
+    } //This is several ways to change the controls: JUCE handles this stuff. */
+
+    if (!(getBus(false, 0)->isEnabled() && getBus(true, 0)->isEnabled())) return;
+    auto mainOutput = getBusBuffer(buffer, false, 0); //if we have audio busses at all,
+    auto mainInput = getBusBuffer(buffer, true, 0); //they're now mainOutput and mainInput.
+    double rmsSize = (1881.0 / 44100.0)*getSampleRate(); //higher is slower with larger RMS buffers
+    
+    for (int i = 0; i < buffer.getNumSamples(); ++i)
+    {
+        auto outL = mainOutput.getWritePointer(0, i);
+        auto outR = mainOutput.getWritePointer(1, i);
+        auto inL = mainInput.getReadPointer(0, i); //in isBussesLayoutSupported, we have already
+        auto inR = mainInput.getReadPointer(1, i); //specified that we can only be stereo and never mono
+
+        float currentslewL = (fabs(*inL-previousLeft)/28000.0f)*getSampleRate();
+        float currentslewR = (fabs(*inR-previousRight)/28000.0f)*getSampleRate();
+        if (currentslewL > slewLeft) slewLeft = currentslewL;
+        if (currentslewR > slewRight) slewRight = currentslewR;
+        previousLeft = *inL;
+        previousRight = *inR;
+        //slew measurement is NOT rectified
+        
+        float rectifiedL = fabs(*inL);
+        float rectifiedR = fabs(*inR);
+        if (rectifiedL > peakLeft) peakLeft = rectifiedL;
+        if (rectifiedR > peakRight) peakRight = rectifiedR;
+        rmsLeft += (rectifiedL * rectifiedL);
+        rmsRight += (rectifiedR * rectifiedR);
+        rmsCount++; //rms loudness IS rectified
+        
+        *outL = *inL * 0.5f;
+        *outR = *inR * 0.5f; //this is a meter. Raw pass-through
     }
+
+
+    if (rmsCount > rmsSize)
+    {
+        AudioToUIMessage msg; //define the thing we're telling JUCE
+        
+        msg.what = AudioToUIMessage::RMS_LEFT;
+        msg.newValue = sqrt(sqrt(rmsLeft / rmsCount));
+        audioToUI.push(msg);
+        
+        msg.what = AudioToUIMessage::RMS_RIGHT;
+        msg.newValue = sqrt(sqrt(rmsRight / rmsCount));
+        audioToUI.push(msg);
+        
+        msg.what = AudioToUIMessage::PEAK_LEFT;
+        msg.newValue = sqrt(peakLeft);
+        audioToUI.push(msg);
+        
+        msg.what = AudioToUIMessage::PEAK_RIGHT;
+        msg.newValue = sqrt(peakRight);
+        audioToUI.push(msg);
+        
+        msg.what = AudioToUIMessage::SLEW_LEFT;
+        msg.newValue = slewLeft;
+        audioToUI.push(msg);
+        
+        msg.what = AudioToUIMessage::SLEW_RIGHT;
+        msg.newValue = slewRight;
+        audioToUI.push(msg);
+        
+        msg.what = AudioToUIMessage::INCREMENT;
+        msg.newValue = 1200; //wrap to this value. Only here because we are sending a value anyway
+        audioToUI.push(msg);
+        //tell JUCE. we have WHAT as where to send the message and newValue as the number we're sending.
+        
+        rmsLeft = 0.0;
+        rmsRight = 0.0;
+        peakLeft = 0.0;
+        peakRight = 0.0;
+        slewLeft = 0.0;
+        slewRight = 0.0; //reset our variables to do the RMS again
+        rmsCount = 0;
+    }
+
+
+ /*   for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    {
+        auto* channelIn = buffer.getReadPointer (channel);
+        auto* channelOut = buffer.getWritePointer (channel);
+        
+        for (int i = 0; i < buffer.getNumSamples(); ++i)  {
+            channelOut[i] = channelIn[i] * 0.5f;
+        }
+    } */
+    
 }
 
 //==============================================================================
