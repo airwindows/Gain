@@ -83,7 +83,7 @@ struct AirwindowsMeter : public juce::Component
     void paint(juce::Graphics &g) override;
     
     static constexpr int dataPoints = 720;
-    u_long dataPosition = 0;
+    int dataPosition = 0;
     std::array<float, dataPoints> dataA;
     std::array<float, dataPoints> dataB;
     std::array<float, dataPoints> dataC;
@@ -103,10 +103,10 @@ struct AirwindowsMeter : public juce::Component
     void pushH(float X) {dataH[dataPosition] = X;}
     void pushIncrement(float limit) {
         dataPosition++;
-        if (dataPosition >= (u_long)limit) dataPosition = 0;
+        if (dataPosition >= (int)limit) dataPosition = 0;
     }
     void resetArrays(){
-        for (u_long count = 0; count < dataPoints; ++count) //count through all the points in the array
+        for (int count = 0; count < dataPoints; ++count) //count through all the points in the array
         {
             dataA[count] = 0.0f;
             dataB[count] = 0.0f;

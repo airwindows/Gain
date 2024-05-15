@@ -192,7 +192,7 @@ void AirwindowsMeter::paint(juce::Graphics &g)
     g.fillRect(0.0, 165.0f*dy, (float)getWidth(),1.0); //-30dB markings
     g.fillRect(0.0, 175.0f*dy, (float)getWidth(),1.0); //-36dB markings
 
-    for (u_long count = 0; count < dataPoints; ++count) //count through all the points in the array
+    for (int count = 0; count < dataPoints; ++count) //count through all the points in the array
     {
         g.setColour(juce::Colours::grey);
         g.fillRect((float)dataPosition*dx, 0.0f, 1.0f, (float)getHeight()); //the moving line
