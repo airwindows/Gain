@@ -6,47 +6,48 @@
 #include "ipps.h"
 #endif
 
-class PluginProcessor : public juce::AudioProcessor
+class PluginProcessor : public juce::AudioProcessor, public juce::AudioProcessorParameter::Listener
 {
 public:
     PluginProcessor();
     ~PluginProcessor() override;
-
+    void parameterValueChanged(int parameterIndex, float newValue) override;
+    void parameterGestureChanged(int parameterIndex, bool starting) override;
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
-
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
-
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-
+    void processBlock (juce::AudioBuffer<double>&, juce::MidiBuffer&) override;
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override;
-
+    bool supportsDoublePrecisionProcessing() const override;
     const juce::String getName() const override;
-
     bool acceptsMidi() const override;
     bool producesMidi() const override;
     bool isMidiEffect() const override;
     double getTailLengthSeconds() const override;
-
     int getNumPrograms() override;
     int getCurrentProgram() override;
     void setCurrentProgram (int index) override;
     const juce::String getProgramName (int index) override;
     void changeProgramName (int index, const juce::String& newName) override;
-
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    // updateTrackProperties may be called by the host if it feels like it
+    // this method calls a similar one in the editor class that updates the editor
+    void updateTrackProperties(const TrackProperties& properties) override;
     
+    TrackProperties trackProperties;
+
     //now we can declare variables used in the audio thread
     
     enum Parameters
     {
-        GAIN,
-        CUTOFF,
-        RESONANCE,
-        n_params
+        KNOBA,
+        KNOBB,
+        KNOBC
     };
+    static constexpr int n_params = KNOBC + 1;
     std::array<juce::AudioParameterFloat *, n_params> params;
     //This is where we're defining things that go into the plugin's interface.
     
@@ -72,8 +73,6 @@ public:
             RMS_RIGHT,
             PEAK_LEFT,
             PEAK_RIGHT,
-            SLEW_LEFT,
-            SLEW_RIGHT,
             INCREMENT
         } what{NEW_VALUE};
         Parameters which;
@@ -117,17 +116,16 @@ public:
     
     LockFreeQueue<UIToAudioMessage> uiToAudio;
     LockFreeQueue<AudioToUIMessage> audioToUI;
-
-
-    float rmsLeft = 0.0;
-    float rmsRight = 0.0;
-    float peakLeft = 0.0;
-    float peakRight = 0.0;
-    float slewLeft = 0.0;
-    float slewRight = 0.0;
-    float previousLeft = 0.0;
-    float previousRight = 0.0;
-    int rmsCount = 0;
+    
+    uint32_t fpdL;
+    uint32_t fpdR;
+    //default stuff
+    
+    double rmsLeft;
+    double rmsRight;
+    double peakLeft;
+    double peakRight;
+    int rmsCount;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginProcessor)
