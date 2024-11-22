@@ -43,11 +43,45 @@ public:
     
     enum Parameters
     {
-        KNOBA,
-        KNOBB,
-        KNOBC
+        KNOBHIP,
+        KNOBLOP,
+        KNOBAIR,
+        KNOBFIR,
+        KNOBSTO,
+        KNOBRNG,
+        KNOBFCT,
+        KNOBSCT,
+        KNOBFCR,
+        KNOBSCR,
+        KNOBFCA,
+        KNOBSCA,
+        KNOBFCL,
+        KNOBSCL,
+        KNOBFGT,
+        KNOBSGT,
+        KNOBFGR,
+        KNOBSGR,
+        KNOBFGS,
+        KNOBSGS,
+        KNOBFGL,
+        KNOBSGL,
+        KNOBTRF,
+        KNOBTRG,
+        KNOBTRR,
+        KNOBHMF,
+        KNOBHMG,
+        KNOBHMR,
+        KNOBLMF,
+        KNOBLMG,
+        KNOBLMR,
+        KNOBBSF,
+        KNOBBSG,
+        KNOBBSR,
+        KNOBDSC,
+        KNOBPAN,
+        KNOBFAD,
     };
-    static constexpr int n_params = KNOBC + 1;
+    static constexpr int n_params = KNOBFAD + 1;
     std::array<juce::AudioParameterFloat *, n_params> params;
     //This is where we're defining things that go into the plugin's interface.
     
@@ -69,10 +103,14 @@ public:
         enum What
         {
             NEW_VALUE,
-            RMS_LEFT,
-            RMS_RIGHT,
+            SLEW_LEFT,
+            SLEW_RIGHT,
             PEAK_LEFT,
             PEAK_RIGHT,
+            RMS_LEFT,
+            RMS_RIGHT,
+            ZERO_LEFT,
+            ZERO_RIGHT,
             INCREMENT
         } what{NEW_VALUE};
         Parameters which;
@@ -121,11 +159,21 @@ public:
     uint32_t fpdR;
     //default stuff
     
-    double rmsLeft;
-    double rmsRight;
-    double peakLeft;
-    double peakRight;
-    int rmsCount;
+    double peakLeft = 0.0;
+    double peakRight = 0.0;
+    double slewLeft = 0.0;
+    double slewRight = 0.0;
+    double rmsLeft = 0.0;
+    double rmsRight = 0.0;
+    double previousLeft = 0.0;
+    double previousRight = 0.0;
+    double zeroLeft = 0.0;
+    double zeroRight = 0.0;
+    double longestZeroLeft = 0.0;
+    double longestZeroRight = 0.0;
+    bool wasPositiveL = false;
+    bool wasPositiveR = false;
+    int rmsCount = 0;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginProcessor)

@@ -9,13 +9,13 @@
 class AirwindowsLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
-    //void drawLinearSlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos, float minSliderPos, float maxSliderPos, const juce::Slider::SliderStyle style, juce::Slider& slider) override;
+    void drawLinearSlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos, float minSliderPos, float maxSliderPos, const juce::Slider::SliderStyle style, juce::Slider& slider) override;
     void drawRotarySlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider& slider) override;
 
     AirwindowsLookAndFeel()
     {
         setColour(juce::Slider::backgroundColourId, juce::Colours::red);
-        setColour(juce::Slider::thumbColourId, juce::Colours::lightgrey);
+        setColour(juce::Slider::thumbColourId, juce::Colours::grey);
         setColour(juce::Slider::trackColourId, juce::Colours::grey);
         setColour(juce::Slider::rotarySliderFillColourId, juce::Colours::grey);
         setColour(juce::Slider::rotarySliderOutlineColourId, juce::Colours::black); //track after thumb
@@ -29,11 +29,13 @@ public:
         setColour(juce::TextButton::textColourOnId, juce::Colours::lightgrey);
         setColour(juce::ResizableWindow::backgroundColourId, juce::Colours::lightgrey);
         
-        juce::String newFont = juce::String(); juce::String namedFont = JucePlugin_Name; namedFont.append("Font",1024);
+        juce::String namedFont = JucePlugin_Name; namedFont.append("Font",1024);
         juce::String newColour = juce::String(); juce::String namedColour = JucePlugin_Name; namedColour.append("Colour",1024);
         juce::String newImage = juce::String(); juce::String namedImage = JucePlugin_Name; namedImage.append("Image",1024);
         juce::String newApplyTrackColourAmount = juce::String(); juce::String namedApplyTrackColourAmount = JucePlugin_Name; namedApplyTrackColourAmount.append("TrackColourAmount",1024);
         juce::String newLEDColour = juce::String(); juce::String namedLEDColour = JucePlugin_Name; namedLEDColour.append("LEDColour",1024);
+        juce::String newInterpolation = juce::String(); juce::String namedInterpolation = JucePlugin_Name; namedInterpolation.append("Interpolation",1024);
+        juce::String newTilt = juce::String(); juce::String namedTilt = JucePlugin_Name; namedInterpolation.append("Tilt",1024);
 
         juce::File customSettings = juce::File::getSpecialLocation(juce::File::SpecialLocationType::userDocumentsDirectory).getChildFile("Airwindows").getChildFile("AirwindowsGlobals.txt");
         juce::String xmlFile = customSettings.loadFileAsString();
@@ -52,6 +54,10 @@ public:
                     if (attributeValueAsString.equalsIgnoreCase(namedApplyTrackColourAmount)) newApplyTrackColourAmount = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase("userLEDColour") && newLEDColour == juce::String()) newLEDColour = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase(namedLEDColour)) newLEDColour = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase("userInterpolation") && newInterpolation == juce::String()) newInterpolation = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase(namedInterpolation)) newInterpolation = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase("userTilt") && newTilt == juce::String()) newTilt = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase(namedTilt)) newTilt = e->getStringAttribute("value");
                 }
             }
             body.release();
@@ -62,60 +68,72 @@ public:
             backgroundImage = juce::ImageFileFormat::loadFrom(juce::File(customBackground));
             blurImage = backgroundImage.rescaled(3, 3);
          }
-
-        if (newFont == juce::String()) newFont = "Jost";
-        setDefaultSansSerifTypefaceName(newFont);
-        
         defaultColour = juce::Colours::findColourForName(newColour, juce::Colours::lightgrey);
         applyTrackColour = fmax(fmin(newApplyTrackColourAmount.getFloatValue(),1.0f),0.0f);
         LEDColour = juce::Colours::findColourForName(newLEDColour, juce::Colours::red);
-     }
+        alfInterpolation = 2; //defaults to bicubic 'cloud' interpolation
+        if (newInterpolation.equalsIgnoreCase("none")) alfInterpolation = 0;
+        if (newInterpolation.equalsIgnoreCase("off")) alfInterpolation = 0;
+        if (newInterpolation.equalsIgnoreCase("nearestneighbor")) alfInterpolation = 0;
+        if (newInterpolation.equalsIgnoreCase("nearest neighbor")) alfInterpolation = 0; //variations on mondrian-meter
+        if (newInterpolation.equalsIgnoreCase("bilinear")) alfInterpolation = 1; //option for softer definition
+        applyTilt = fmax(fmin(newTilt.getFloatValue(),1.0f),0.0f) * 0.5f; //value is 0-1 but in use it's 0-0.5
+    }
     juce::Colour defaultColour = juce::Colours::lightgrey;
     juce::Image backgroundImage = juce::Image();
     juce::Image blurImage = juce::Image();
+    juce::String newFont = juce::String();
     bool usingNamedImage = false;
     float applyTrackColour = 0.5;
     juce::Colour LEDColour = juce::Colours::red;
+    int alfInterpolation;
+    float applyTilt = 0.0;
 };
 
 struct AirwindowsMeter : public juce::Component
 {
     void paint(juce::Graphics &g) override;
     
-    static constexpr int dataPoints = 720;
-    int dataPosition = 0;
-    std::array<float, dataPoints> dataA;
-    std::array<float, dataPoints> dataB;
-    std::array<float, dataPoints> dataC;
-    std::array<float, dataPoints> dataD;
-    std::array<float, dataPoints> dataE;
-    std::array<float, dataPoints> dataF;
+    juce::Image barImage = juce::Image(juce::Image::RGB, 34, 5, true);
+    juce::String displayTrackName = juce::String();
+    juce::String displayFont = juce::String();
+    int meterInterpolation = 2;
+    static constexpr int dataPoints = 34;
+    std::array<float, dataPoints> dataR;
     std::array<float, dataPoints> dataG;
-    std::array<float, dataPoints> dataH;
+    std::array<float, dataPoints> dataB;
+    std::array<float, dataPoints> edgeR;
+    std::array<float, dataPoints> edgeG;
+    std::array<float, dataPoints> edgeB;
+    float inputSlewL;
+    float inputSlewR;
+    float inputPeakL;
+    float inputPeakR;
+    float inputRMSL;
+    float inputRMSR;
+    float inputZeroL;
+    float inputZeroR;
+ 
+    void pushA(float X) {inputSlewL = X;}
+    void pushB(float X) {inputSlewR = X;}
+    void pushC(float X) {inputPeakL = X;}
+    void pushD(float X) {inputPeakR = X;}
+    void pushE(float X) {inputRMSL = X;}
+    void pushF(float X) {inputRMSR = X;}
+    void pushG(float X) {inputZeroL = X;}
+    void pushH(float X) {inputZeroR = X;}
+    void pushIncrement() {}
     
-    void pushA(float X) {dataA[dataPosition] = X;}
-    void pushB(float X) {dataB[dataPosition] = X;}
-    void pushC(float X) {dataC[dataPosition] = X;}
-    void pushD(float X) {dataD[dataPosition] = X;}
-    void pushE(float X) {dataE[dataPosition] = X;}
-    void pushF(float X) {dataF[dataPosition] = X;}
-    void pushG(float X) {dataG[dataPosition] = X;}
-    void pushH(float X) {dataH[dataPosition] = X;}
-    void pushIncrement(float limit) {
-        dataPosition++;
-        if (dataPosition >= (int)limit) dataPosition = 0;
-    }
-    void resetArrays(){
+   void resetArrays(){
         for (int count = 0; count < dataPoints; ++count) //count through all the points in the array
         {
-            dataA[count] = 0.0f;
-            dataB[count] = 0.0f;
-            dataC[count] = 0.0f;
-            dataD[count] = 0.0f;
-            dataE[count] = 0.0f;
-            dataF[count] = 0.0f;
             dataG[count] = 0.0f;
-            dataH[count] = 0.0f;
+            dataR[count] = 0.0f;
+            dataB[count] = 0.0f;
+            edgeG[count] = 0.0f;
+            edgeR[count] = 0.0f;
+            edgeB[count] = 0.0f;
+            barImage = juce::Image(juce::Image::RGB, 34, 5, true);
         }
     }
     float lastLOutline = 0.0;

@@ -2,112 +2,82 @@
 // Initial seed code for the meter created by Paul Walker on 8/23/21.
 #include "AirwindowsUI.h"
 
+void AirwindowsLookAndFeel::drawLinearSlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos, float minSliderPos, float maxSliderPos, const juce::Slider::SliderStyle style, juce::Slider& slider) {
+    auto bounds = juce::Rectangle<int> (x, y, width, height).toFloat();
+    auto bevelW = sqrt((float)width);
+    if (slider.isHorizontal()) bevelW = sqrt((float)height);
+    auto lineW = sqrt(bevelW)*0.618f;
+    auto trackWidth = bevelW;
+    //basic variables we'll be using for our controls
+    
+    juce::Path backgroundTrack;
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::white, 0.75f)); //highlight
+    backgroundTrack.startNewSubPath((slider.isHorizontal()?(float)x:(float)x+(float)width*0.5f)+(lineW*0.5f), (slider.isHorizontal()?(float)y+(float)height*0.5f:(float)((height*0.97f)+y))+(lineW*0.5f));
+    backgroundTrack.lineTo ((slider.isHorizontal()?(float)(width+x):(float)x+(float)width*0.5f)+(lineW*0.5f), (slider.isHorizontal()?(float)y+(float)height*0.5f:(float)y)+(lineW*0.5f));
+    g.strokePath (backgroundTrack, {trackWidth, juce::PathStrokeType::curved, juce::PathStrokeType::rounded });
+    backgroundTrack.clear();
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::black, 0.75f)); //shadow
+    backgroundTrack.startNewSubPath((slider.isHorizontal()?(float)x:(float)x+(float)width*0.5f)-lineW, (slider.isHorizontal()?(float)y+(float)height*0.5f:(float)((height*0.97f)+y))-lineW);
+    backgroundTrack.lineTo ((slider.isHorizontal()?(float)(width+x):(float)x+(float)width*0.5f)-lineW, (slider.isHorizontal()?(float)y+(float)height*0.5f:(float)y)-lineW);
+    g.strokePath (backgroundTrack, {trackWidth, juce::PathStrokeType::curved, juce::PathStrokeType::rounded });
+    backgroundTrack.clear();
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId)); //inside slot in which the slider goes
+    backgroundTrack.startNewSubPath((slider.isHorizontal()?(float)x:(float)x+(float)width*0.5f), (slider.isHorizontal()?(float)y+(float)height*0.5f:(float)((height*0.97f)+y)));
+    backgroundTrack.lineTo ((slider.isHorizontal()?(float)(width+x):(float)x+(float)width*0.5f), (slider.isHorizontal()?(float)y+(float)height*0.5f:(float)y));
+    g.strokePath (backgroundTrack, {trackWidth*0.618f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded });
+    //draw the slot from which the slider moves. Note that we leave a bit of space on the bottom to show the label:
+    
+    g.setFont(juce::Font(newFont, g.getCurrentFont().getHeight(), 0));
+    g.setFont ((((lineW+bevelW)*30.0f) / (float)g.getCurrentFont().getHeight()));
+    if (slider.isHorizontal()) bounds.removeFromBottom((bounds.getHeight()*0.5f)-(bevelW*3.0f));
+    else bounds.removeFromBottom(-30.0f);
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::white, 0.75f)); //highlight
+    g.drawFittedText(slider.getName(), juce::Rectangle<int>((int)(bounds.getWidth()+lineW),(int)(bounds.getHeight()+lineW)), juce::Justification::centredBottom, 1);
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::black, 0.75f)); //shadow
+    g.drawFittedText(slider.getName(), juce::Rectangle<int>((int)(bounds.getWidth()-lineW),(int)(bounds.getHeight()-lineW)), juce::Justification::centredBottom, 1);
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::black, 0.25f)); //text inside emboss
+    g.drawFittedText(slider.getName(), juce::Rectangle<int>((int)bounds.getWidth(),(int)bounds.getHeight()), juce::Justification::centredBottom, 1);
+    //This is the drawing of the text under the slider, to allow the slider to obscure it. Sliders are designed to be packed pretty tightly,
+    //but the horizontal ones can still have a lot of text. To control their bulk, narrow the slot they're in.
 
-/*void AirwindowsLookAndFeel::drawLinearSlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
-                                       float minSliderPos,
-                                       float maxSliderPos,
-                                       const juce::Slider::SliderStyle style, juce::Slider& slider)
-{
-    if (slider.isBar())
-    {
-        g.setColour (slider.findColour (juce::Slider::trackColourId));
-        g.fillRect (slider.isHorizontal() ? Rectangle<float> (static_cast<float> (x), (float) y + 0.5f, sliderPos - (float) x, (float) height - 1.0f)
-                                          : Rectangle<float> ((float) x + 0.5f, sliderPos, (float) width - 1.0f, (float) y + ((float) height - sliderPos)));
-
-        drawLinearSliderOutline (g, x, y, width, height, style, slider);
-    }
-    else
-    {
-        auto isTwoVal   = (style == juce::Slider::SliderStyle::TwoValueVertical   || style == Slider::SliderStyle::TwoValueHorizontal);
-        auto isThreeVal = (style == juce::Slider::SliderStyle::ThreeValueVertical || style == Slider::SliderStyle::ThreeValueHorizontal);
-
-        auto trackWidth = jmin (6.0f, slider.isHorizontal() ? (float) height * 0.25f : (float) width * 0.25f);
-
-        Point<float> startPoint (slider.isHorizontal() ? (float) x : (float) x + (float) width * 0.5f,
-                                 slider.isHorizontal() ? (float) y + (float) height * 0.5f : (float) (height + y));
-
-        Point<float> endPoint (slider.isHorizontal() ? (float) (width + x) : startPoint.x,
-                               slider.isHorizontal() ? startPoint.y : (float) y);
-
-        Path backgroundTrack;
-        backgroundTrack.startNewSubPath (startPoint);
-        backgroundTrack.lineTo (endPoint);
-        g.setColour (slider.findColour (Slider::backgroundColourId));
-        g.strokePath (backgroundTrack, { trackWidth, PathStrokeType::curved, PathStrokeType::rounded });
-
-        Path valueTrack;
-        Point<float> minPoint, maxPoint, thumbPoint;
-
-        if (isTwoVal || isThreeVal)
-        {
-            minPoint = { slider.isHorizontal() ? minSliderPos : (float) width * 0.5f,
-                         slider.isHorizontal() ? (float) height * 0.5f : minSliderPos };
-
-            if (isThreeVal)
-                thumbPoint = { slider.isHorizontal() ? sliderPos : (float) width * 0.5f,
-                               slider.isHorizontal() ? (float) height * 0.5f : sliderPos };
-
-            maxPoint = { slider.isHorizontal() ? maxSliderPos : (float) width * 0.5f,
-                         slider.isHorizontal() ? (float) height * 0.5f : maxSliderPos };
-        }
-        else
-        {
-            auto kx = slider.isHorizontal() ? sliderPos : ((float) x + (float) width * 0.5f);
-            auto ky = slider.isHorizontal() ? ((float) y + (float) height * 0.5f) : sliderPos;
-
-            minPoint = startPoint;
-            maxPoint = { kx, ky };
-        }
-
-        auto thumbWidth = getSliderThumbRadius (slider);
-
-        valueTrack.startNewSubPath (minPoint);
-        valueTrack.lineTo (isThreeVal ? thumbPoint : maxPoint);
-        g.setColour (slider.findColour (Slider::trackColourId));
-        g.strokePath (valueTrack, { trackWidth, PathStrokeType::curved, PathStrokeType::rounded });
-
-        if (! isTwoVal)
-        {
-            g.setColour (slider.findColour (Slider::thumbColourId));
-            g.fillEllipse (Rectangle<float> (static_cast<float> (thumbWidth), static_cast<float> (thumbWidth)).withCentre (isThreeVal ? thumbPoint : maxPoint));
-        }
-
-        if (isTwoVal || isThreeVal)
-        {
-            auto sr = jmin (trackWidth, (slider.isHorizontal() ? (float) height : (float) width) * 0.4f);
-            auto pointerColour = slider.findColour (Slider::thumbColourId);
-
-            if (slider.isHorizontal())
-            {
-                drawPointer (g, minSliderPos - sr,
-                             jmax (0.0f, (float) y + (float) height * 0.5f - trackWidth * 2.0f),
-                             trackWidth * 2.0f, pointerColour, 2);
-
-                drawPointer (g, maxSliderPos - trackWidth,
-                             jmin ((float) (y + height) - trackWidth * 2.0f, (float) y + (float) height * 0.5f),
-                             trackWidth * 2.0f, pointerColour, 4);
-            }
-            else
-            {
-                drawPointer (g, jmax (0.0f, (float) x + (float) width * 0.5f - trackWidth * 2.0f),
-                             minSliderPos - trackWidth,
-                             trackWidth * 2.0f, pointerColour, 1);
-
-                drawPointer (g, jmin ((float) (x + width) - trackWidth * 2.0f, (float) x + (float) width * 0.5f), maxSliderPos - sr,
-                             trackWidth * 2.0f, pointerColour, 3);
-            }
-        }
-
-        if (slider.isBar())
-            drawLinearSliderOutline (g, x, y, width, height, style, slider);
-    }
+    juce::Point<float> maxPoint = {slider.isHorizontal()?(sliderPos*0.94f)+(width*0.025f):((float)x+(float)width*0.5f), slider.isHorizontal()?((float)y+(float)height*0.5f):(sliderPos*0.94f)+(height*0.025f)};
+    auto thumbWidth = bevelW*2.9f;
+    auto rectSlider = juce::Rectangle(thumbWidth*1.618f, thumbWidth).withCentre(maxPoint);
+    if (slider.isHorizontal()) rectSlider = juce::Rectangle(thumbWidth, thumbWidth*1.618f).withCentre(maxPoint);
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId)); g.setOpacity(1.0f); g.fillRoundedRectangle (rectSlider, bevelW);
+    //solid background for knob so you can't see the track under it
+    juce::ColourGradient cg = juce::ColourGradient(juce::Colours::white, rectSlider.getTopLeft(), juce::Colours::black, rectSlider.getBottomRight(),false);
+    cg.addColour(0.2f, juce::Colours::white); cg.addColour(0.618f, juce::Colours::transparentBlack); cg.addColour(0.9f, juce::Colours::black); cg.isRadial = true;
+    g.setGradientFill(cg);
+    auto inset = rectSlider; inset.reduce(bevelW*0.25f, bevelW*0.25f);
+    g.drawRoundedRectangle (inset, bevelW*0.8f, bevelW*0.5f);
+    cg = juce::ColourGradient(juce::Colours::transparentWhite, rectSlider.getTopLeft(), juce::Colours::black, rectSlider.getBottomRight(),false);
+    cg.addColour(0.0955f, juce::Colours::white); cg.addColour(0.382f, slider.findColour (juce::ResizableWindow::backgroundColourId)); cg.addColour(0.618f, slider.findColour (juce::ResizableWindow::backgroundColourId)); cg.isRadial = true;
+    g.setGradientFill(cg); inset.reduce(bevelW*0.25f, bevelW*0.25f); g.drawRoundedRectangle (inset, bevelW*0.9f, bevelW*0.382f);
+    cg = juce::ColourGradient(juce::Colours::transparentWhite, rectSlider.getTopLeft(), juce::Colours::transparentBlack, rectSlider.getBottomRight(),false);
+    cg.addColour(0.04775f, juce::Colours::transparentWhite); cg.addColour(0.382f, slider.findColour (juce::ResizableWindow::backgroundColourId)); cg.addColour(0.618f, slider.findColour (juce::ResizableWindow::backgroundColourId)); cg.isRadial = true;
+    g.setGradientFill(cg); inset.reduce(bevelW*0.382f, bevelW*0.382f); g.drawRoundedRectangle (inset, bevelW, bevelW*0.618f);
+    g.setColour (juce::Colours::black); g.drawRoundedRectangle (rectSlider, bevelW, lineW);
+    //This is the outside area of the slider knob, with the shading/highlighting that renders the 3D effect.
+    
+    float thumbScale = 0.85f; rectSlider = juce::Rectangle<float> (thumbWidth*thumbScale, thumbWidth*thumbScale).withCentre (maxPoint);
+    rectSlider = juce::Rectangle<float> (thumbWidth*thumbScale, thumbWidth*thumbScale).withCentre (maxPoint);
+    g.setColour (slider.findColour (juce::Slider::thumbColourId)); g.fillEllipse (rectSlider);
+    cg = juce::ColourGradient(juce::Colours::white, rectSlider.getBottomRight(), juce::Colours::black, rectSlider.getTopLeft(),false);
+    cg.addColour(0.191f, juce::Colours::white); cg.addColour(0.382f, slider.findColour (juce::Slider::thumbColourId)); cg.addColour(0.618f, slider.findColour (juce::Slider::thumbColourId)); cg.isRadial = true;
+    g.setGradientFill(cg);
+    inset = rectSlider; inset.reduce(bevelW*0.382f, bevelW*0.382f);
+    g.drawEllipse (inset, bevelW*0.5f);
+    cg = juce::ColourGradient(juce::Colours::white, rectSlider.getBottomRight(), juce::Colours::black, rectSlider.getTopLeft(),false);
+    cg.addColour(0.0955f, juce::Colours::transparentWhite); cg.addColour(0.382f, slider.findColour (juce::Slider::thumbColourId)); cg.addColour(0.618f, slider.findColour (juce::Slider::thumbColourId)); cg.isRadial = true;
+    g.setGradientFill(cg);
+    inset.reduce(bevelW*0.125f, bevelW*0.125f);
+    g.drawEllipse (inset, bevelW*0.5f); g.setColour (juce::Colours::black); g.drawEllipse (rectSlider, lineW);
+    //This is the thumb of the knob, allowing a custom color to the thumb
 }
-*/
 
 
-void AirwindowsLookAndFeel::drawRotarySlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
-                                              const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider& slider)
-{
+void AirwindowsLookAndFeel::drawRotarySlider (juce::Graphics& g, int x, int y, int width, int height, float sliderPos, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider& slider) {
     auto tilt = (slider.findColour (juce::Slider::backgroundColourId).getFloatRed()-0.5f)*1.236f;
     auto textbounds = juce::Rectangle<int> (x, y, width, height).toFloat();
     auto bounds = textbounds; bounds.removeFromBottom(4.0f+(height*0.12f)+(height*tilt*tilt*0.12f)+(height*tilt*fabs(tilt)*0.12f)); bounds.reduce(1.0f, 1.0f);
@@ -138,6 +108,7 @@ void AirwindowsLookAndFeel::drawRotarySlider (juce::Graphics& g, int x, int y, i
     g.drawEllipse (inset, bevelW*0.618f); g.setColour (juce::Colours::black); g.drawEllipse (square, lineW);
     //This is the outside circle of the knob, with the shading/highlighting that renders the 3D effect. Tilting of the knob is included
     
+    g.setFont(juce::Font(newFont, g.getCurrentFont().getHeight(), 0));
     g.setFont ((((lineW+bevelW)*30.0f) / (float)g.getCurrentFont().getHeight()) + (tilt*0.25f));
     auto padHeight = (sqrt(bevelW)*-2.0f) + ((bounds.getHeight())-(bounds.getWidth()*scaleHeight)) + (tilt*bevelW) + (fabs(tilt)*-bevelW); if (padHeight < 0.0) padHeight = 0.0;
     textbounds.removeFromBottom(padHeight*0.618f);
@@ -170,112 +141,79 @@ void AirwindowsLookAndFeel::drawRotarySlider (juce::Graphics& g, int x, int y, i
     
 }
 
-void AirwindowsMeter::paint(juce::Graphics &g)
-{
-    g.fillAll(juce::Colours::white); //blank screen before doing anything, unless our draw covers the whole display anyway
+void AirwindowsMeter::paint(juce::Graphics &g) {
+    g.fillAll(findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::black, 0.8f)); //blank screen before doing anything, using the chart background black
     //this is probably quick and optimized
     
-    auto linewidth = getWidth();
-    if (getHeight() > linewidth) linewidth = getHeight();
-    linewidth = (int)cbrt(linewidth/2)/2;
+    float hype = 0.618033988749894f;
+    float slewL = sqrt(inputSlewL)*300.0f;
+    float slewR = sqrt(inputSlewR)*300.0f;
+    float peakL = inputPeakL * 200.0f;
+    float peakR = inputPeakR * 200.0f;
+    if (peakL > 197.0f) peakL = 197.0f;
+    if (peakR > 197.0f) peakR = 197.0f;
+    float meterZeroL = (sqrt(inputZeroL)*6.0f)-6.0f;
+    if (meterZeroL > 192.0f) meterZeroL = 192.0f;
+    float meterZeroR = (sqrt(inputZeroR)*6.0f)-6.0f;
+    if (meterZeroR > 192.0f) meterZeroR = 192.0f;
+    int lightL = 16-(int)(inputPeakL*16.0f); if (lightL < 0) lightL = 0;
+    int lightR = 16+(int)(inputPeakR*16.0f); if (lightR > 32) lightR = 32;
+    float psDotHypeL = (11.0f * sqrt(inputRMSL * inputRMSR)) / (fabs(((peakL*((hype+6.0f)/7.0f))-slewL) * (7.0f/meterZeroL) )+1.0f);
+    float psDotVibeL = sin(pow(fmin(inputPeakL*8.5f,6.18f) / (fabs(((peakL*((hype+4.0f)/5.0f))-slewL) * (7.0f/meterZeroL) )+1.0f),1.618f)*0.13f) * 3.141592f;
+    float psDotSizeL = ((psDotVibeL*(1.0f-hype))+(psDotHypeL*hype))*(1.0f+(sin(hype*3.141592f)*0.25f));
+    float psDotHypeR = (11.0f * sqrt(inputRMSL * inputRMSR)) / (fabs(((peakR*((hype+6.0f)/7.0f))-slewR) * (7.0f/meterZeroR) )+1.0f);
+    float psDotVibeR = sin(pow(fmin(inputSlewR*8.5f,6.18f) / (fabs(((peakR*((hype+4.0f)/5.0f))-slewR) * (7.0f/meterZeroR) )+1.0f),1.618f)*0.13f) * 3.141592f;
+    float psDotSizeR = ((psDotVibeR*(1.0f-hype))+(psDotHypeR*hype))*(1.0f+(sin(hype*3.141592f)*0.25f));
     
-    float dx = (float)getWidth()/720.0f; //width of individual pixel on this display object
-    float dy = (float)getHeight()/200.0f; //height of individual pixel on this display object
-    float dotWidth = fmax(1280.0f/(float)getParentWidth(),1.0f); //scale single pixel to roughly the right size
-    float dotHeight = fmax(720.0f/(float)getParentHeight(),1.0f); //scale single pixel to roughly the right size
-
-    g.setColour(juce::Colours::lightgrey);
-    g.fillRect(0.0,  60.0f*dy, (float)getWidth(),1.0); // -6dB markings
-    g.fillRect(0.0, 100.0f*dy, (float)getWidth(),1.0); //-12dB markings
-    g.fillRect(0.0, 130.0f*dy, (float)getWidth(),1.0); //-18dB markings
-    g.fillRect(0.0, 150.0f*dy, (float)getWidth(),1.0); //-24dB markings
-    g.fillRect(0.0, 165.0f*dy, (float)getWidth(),1.0); //-30dB markings
-    g.fillRect(0.0, 175.0f*dy, (float)getWidth(),1.0); //-36dB markings
-
-    for (int count = 0; count < dataPoints; ++count) //count through all the points in the array
-    {
-        g.setColour(juce::Colours::grey);
-        g.fillRect((float)dataPosition*dx, 0.0f, 1.0f, (float)getHeight()); //the moving line
-        g.setColour(juce::Colours::black);
-
-        float peakL = dataC[count] * 200.0f;
-        float peakR = dataD[count] * 200.0f;
-        float slewL = sqrt(dataE[count])*275.0f;
-        if (slewL > 197.0f) slewL = 197.0;
-        float slewR = sqrt(dataF[count])*275.0f;
-        if (slewR > 197.0f) slewR = 197.0;
-        float zeroL = (sqrt(dataG[count])*6.0f)-6.0f;
-        if (zeroL > 198.0f) zeroL = 198.0f;
-        float zeroR = (sqrt(dataH[count])*6.0f)-6.0f;
-        if (zeroR > 198.0f) zeroR = 198.0f;
-        
-        if (dataA[count] > dataB[count]) {
-            //draw grey to R point, then green to L
-            float h = dataB[count] * 200.0f; //height of this data point
-            float setR = 1.0f-dataB[count];
-            float setG = 1.0f-dataB[count];
-            float setB = 1.0f-dataB[count];
-            g.setColour(juce::Colour::fromFloatRGBA (setR, setG, setB, 1.0f));
-            g.fillRect((float)count*dx, (200.0f - h)*dy, dx, h*dy);
-            float greyPoint = h;
-            h = dataA[count] * 200.0f; //height of this data point
-            g.setColour(juce::Colour::fromFloatRGBA (0.0, 1.0, 0.0, 1.0f)); //L is pure green
-            g.fillRect((float)count*dx, (200.0f - h)*dy, dx, (h-greyPoint)*dy);
-            g.setColour(juce::Colours::black); //outline in black
-            float extent = fabs(h-lastLOutline)+1.0f;
-            if (extent > h) extent = h;
-            g.fillRect((float)count*dx, (200.0f - h)*dy, dx, extent*dy);
-            g.setColour(juce::Colour::fromFloatRGBA (0.9f, 0.9f, 0.9f, 1.0f));
-            g.fillRect((float)count*dx, (400.0f - h)*dy, dx, h*dy);
-            lastLOutline = h;
+    if (psDotSizeL > 1.0f) {
+        if (dataB[lightL] < 1.618f) dataB[lightL] = 1.618f;
+        if (edgeB[lightL] < (psDotSizeL-1.0f)) edgeB[lightL] = (psDotSizeL-1.0f);
+    } else {
+        if (slewL > peakL) {
+            if (dataG[lightL] < fmin((180.0f+(slewL-peakL))/256.0f,1.0f)) dataG[lightL] = fmin((180.0f+(slewL-peakL))/256.0f,1.0f);
+            if (edgeG[lightL] < fmin(((180.0f-meterZeroL)+(slewL-peakL))/256.0f,1.0f)) edgeG[lightL] = fmin(((180.0f-meterZeroL)+(slewL-peakL))/256.0f,1.0f);
         } else {
-            //draw grey to L point, then red to R
-            float h = dataA[count] * 200.0f; //height of this data point
-            float setR = 1.0f-dataA[count];
-            float setG = 1.0f-dataA[count];
-            float setB = 1.0f-dataA[count];
-            g.setColour(juce::Colour::fromFloatRGBA (setR, setG, setB, 1.0f));
-            g.fillRect((float)count*dx, (200.0f - h)*dy, dx, h*dy);
-            float greyPoint = h;
-            h = dataB[count] * 200.0f; //height of this data point
-            g.setColour(juce::Colour::fromFloatRGBA (1.0, 0.0, 0.0, 1.0f)); //R is pure red
-            g.fillRect((float)count*dx, (200.0f - h)*dy, dx, (h-greyPoint)*dy);
-            g.setColour(juce::Colours::black); //outline in black
-            float extent = fabs(h-lastROutline)+1.0f;
-            if (extent > h) extent = h;
-            g.fillRect((float)count*dx, (200.0f - h)*dy, dx, extent*dy);
-            g.setColour(juce::Colour::fromFloatRGBA (0.9f, 0.9f, 0.9f, 1.0f));
-            g.fillRect((float)count*dx, (400.0f - h)*dy, dx, h*dy);
-            lastROutline = h;
-        } //done with RMS chunk and sound density
-        
-        if (peakL > 197.0f) {
-            peakL = 197.0;
-            g.setColour(juce::Colour(255, 0, 0));
-            g.fillRect((float)count*dx, (200.0f - peakL)*dy, dotWidth*dx, dotHeight*dy);
-
-        } else if (peakL != 0.0f) {
-            g.setColour(juce::Colours::black);
-            g.fillRect((float)count*dx, (200.0f - peakL)*dy, dotWidth*dx, dotHeight*dy);
-        }
-        
-        if (peakR > 197.0f) {
-            peakR = 197.0;
-            g.setColour(juce::Colour(255, 0, 0));
-            g.fillRect((float)count*dx, (200.0f - peakR)*dy, dotWidth*dx, dotHeight*dy);
-
-        } else if (peakR != 0.0f) {
-            g.setColour(juce::Colours::black);
-            g.fillRect((float)count*dx, (200.0f - peakR)*dy, dotWidth*dx, dotHeight*dy);
-            //done with peak
-        }
-     }
+            if (dataR[lightL] < ((255.0f-(peakL-slewL))/256.0f)) dataR[lightL] = ((255.0f-(peakL-slewL))/256.0f);
+            if (edgeR[lightL] < ((meterZeroL-(peakL-slewL))/256.0f)) edgeR[lightL] = ((meterZeroL-(peakL-slewL))/256.0f);
+        } //set COLOR for bar meter L side
+    }
     
-    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::black, 0.382f));
+    if (psDotSizeR > 1.0f) {
+        if (dataB[lightR] < 1.618f) dataB[lightR] = 1.618f;
+        if (edgeB[lightR] < (psDotSizeR-1.0f)) edgeB[lightR] = (psDotSizeR-1.0f);
+    } else {
+        if (slewR > peakR) {
+            if (dataG[lightR] < fmin((180.0f+(slewR-peakR))/256.0f,1.0f)) dataG[lightR] = fmin((180.0f+(slewR-peakR))/256.0f,1.0f);
+            if (edgeG[lightR] < fmin(((180.0f-meterZeroR)+(slewR-peakR))/256.0f,1.0f)) edgeG[lightR] = fmin(((180.0f-meterZeroR)+(slewR-peakR))/256.0f,1.0f);
+        } else {
+            if (dataR[lightR] < ((255.0f-(peakR-slewR))/256.0f)) dataR[lightR] = ((255.0f-(peakR-slewR))/256.0f);
+            if (edgeR[lightR] < ((meterZeroR-(peakR-slewR))/256.0f)) edgeR[lightR] = ((meterZeroR-(peakR-slewR))/256.0f);
+        } //set COLOR for bar meter R side
+    }
+    
+    auto linewidth = getWidth(); if (getHeight() > linewidth) linewidth = getHeight(); linewidth = (int)cbrt(linewidth/2)/2;
+    if (meterInterpolation == 0) g.setImageResamplingQuality(g.lowResamplingQuality);
+    if (meterInterpolation == 1) g.setImageResamplingQuality(g.mediumResamplingQuality);
+    if (meterInterpolation == 2) g.setImageResamplingQuality(g.highResamplingQuality); //copy this section to other stretched-bitmap meters
+    for (int count = 0; count < dataPoints; count++) {
+        barImage.setPixelAt(count, 0, juce::Colour::fromFloatRGBA (edgeR[count], edgeG[count], fmin(edgeB[count],1.0f), 1.0f));
+        barImage.setPixelAt(count, 1, juce::Colour::fromFloatRGBA (dataR[count], dataG[count], fmin(dataB[count],1.0f), 1.0f));
+        barImage.setPixelAt(count, 2, juce::Colour::fromFloatRGBA (dataR[count], dataG[count], fmin(dataB[count],1.0f), 1.0f));
+        barImage.setPixelAt(count, 3, juce::Colour::fromFloatRGBA (edgeR[count], edgeG[count], fmin(edgeB[count],1.0f), 1.0f));
+        dataG[count] *= 0.92f; dataR[count] *= 0.92f; dataB[count] *= 0.98f; //scale brightness down
+        edgeG[count] *= 0.91f; edgeR[count] *= 0.91f; edgeB[count] *= 0.97f; //scale brightness down
+    }
+    g.drawImage(barImage, 0, 0, getWidth(), getHeight()-linewidth, 0, 0, 33, 4); //draw the bar meter
+    if ((displayTrackName == juce::String()) || (displayTrackName.length() < 1.0f)) displayTrackName = juce::String("ConsoleX Channel"); //if not track name, then name of plugin
+    g.setFont(juce::Font(displayFont, g.getCurrentFont().getHeight(), 0)); g.setFont(getHeight());
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::black, 0.5f));
     g.fillRect(0, 0, getWidth(), linewidth);
     g.fillRect(0, 0, linewidth, getHeight());
-    
-    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::white, 0.618f));
+    g.drawText(displayTrackName, 1, 1, getWidth(), getHeight(), juce::Justification::centred); //shadow under text
+
+    g.setColour (findColour(juce::ResizableWindow::backgroundColourId).interpolatedWith (juce::Colours::white, 0.8f));
     g.fillRect(linewidth, getHeight()-linewidth, getWidth(), linewidth);
-    g.fillRect(getWidth()-linewidth, linewidth, linewidth, getHeight()-linewidth);
+    g.fillRect(getWidth()-linewidth, linewidth, linewidth, getHeight()-linewidth); //interior bevel for object
+    g.drawText(displayTrackName, 0, 0, getWidth()-1, getHeight()-1, juce::Justification::centred); //just a tiny emboss on our meter/label
+    
 }
