@@ -29,11 +29,14 @@ public:
         setColour(juce::TextButton::textColourOnId, juce::Colours::lightgrey);
         setColour(juce::ResizableWindow::backgroundColourId, juce::Colours::lightgrey);
         
+        juce::String newWidth = juce::String(); juce::String namedWidth = JucePlugin_Name; namedWidth.append("Width",1024);
+        juce::String newHeight = juce::String(); juce::String namedHeight = JucePlugin_Name; namedHeight.append("Height",1024);
         juce::String namedFont = JucePlugin_Name; namedFont.append("Font",1024);
         juce::String newColour = juce::String(); juce::String namedColour = JucePlugin_Name; namedColour.append("Colour",1024);
         juce::String newImage = juce::String(); juce::String namedImage = JucePlugin_Name; namedImage.append("Image",1024);
         juce::String newApplyTrackColourAmount = juce::String(); juce::String namedApplyTrackColourAmount = JucePlugin_Name; namedApplyTrackColourAmount.append("TrackColourAmount",1024);
         juce::String newLEDColour = juce::String(); juce::String namedLEDColour = JucePlugin_Name; namedLEDColour.append("LEDColour",1024);
+        juce::String newKnobMode = juce::String(); juce::String namedKnobMode = JucePlugin_Name; namedKnobMode.append("KnobMode",1024);
         juce::String newInterpolation = juce::String(); juce::String namedInterpolation = JucePlugin_Name; namedInterpolation.append("Interpolation",1024);
         juce::String newTilt = juce::String(); juce::String namedTilt = JucePlugin_Name; namedInterpolation.append("Tilt",1024);
 
@@ -44,6 +47,10 @@ public:
             for (auto* e : body->getChildIterator()) {
                 if (e->hasTagName ("option")) { // find the "PARAM" sub-element
                     juce::String attributeValueAsString = e->getStringAttribute("id");
+                    if (attributeValueAsString.equalsIgnoreCase("userWidth") && newWidth == juce::String()) newWidth = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase(namedWidth)) newWidth = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase("userHeight") && newHeight == juce::String()) newHeight = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase(namedHeight)) newHeight = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase("userFont") && newFont == juce::String()) newFont = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase(namedFont)) newFont = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase("userColour") && newColour == juce::String()) newColour = e->getStringAttribute("value");
@@ -54,6 +61,8 @@ public:
                     if (attributeValueAsString.equalsIgnoreCase(namedApplyTrackColourAmount)) newApplyTrackColourAmount = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase("userLEDColour") && newLEDColour == juce::String()) newLEDColour = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase(namedLEDColour)) newLEDColour = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase("userKnobMode") && newKnobMode == juce::String()) newKnobMode = e->getStringAttribute("value");
+                    if (attributeValueAsString.equalsIgnoreCase(namedKnobMode)) newKnobMode = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase("userInterpolation") && newInterpolation == juce::String()) newInterpolation = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase(namedInterpolation)) newInterpolation = e->getStringAttribute("value");
                     if (attributeValueAsString.equalsIgnoreCase("userTilt") && newTilt == juce::String()) newTilt = e->getStringAttribute("value");
@@ -68,17 +77,34 @@ public:
             backgroundImage = juce::ImageFileFormat::loadFrom(juce::File(customBackground));
             blurImage = backgroundImage.rescaled(3, 3);
          }
+        userWidth = newWidth.getIntValue(); if (userWidth < 8 || userWidth > 16386) userWidth = 900;
+        userHeight = newHeight.getIntValue(); if (userHeight < 8 || userHeight > 16386) userHeight = 300;
+        //if you've not specified anything or your settings are crazy enough we go with defaults
         defaultColour = juce::Colours::findColourForName(newColour, juce::Colours::lightgrey);
         applyTrackColour = fmax(fmin(newApplyTrackColourAmount.getFloatValue(),1.0f),0.0f);
         LEDColour = juce::Colours::findColourForName(newLEDColour, juce::Colours::red);
+        applyTilt = fmax(fmin(newTilt.getFloatValue(),1.0f),0.0f) * 0.5f; //value is 0-1 but in use it's 0-0.5
+
+        knobMode = 0; //defaults to rotary because it allows for really fine adjustments
+        if (newKnobMode.equalsIgnoreCase("rotary")) knobMode = 0;
+        if (newKnobMode.equalsIgnoreCase("airwindows")) knobMode = 0;
+        if (newKnobMode.equalsIgnoreCase("realistic")) knobMode = 0;
+        if (newKnobMode.equalsIgnoreCase("vertical")) knobMode = 1;
+        if (newKnobMode.equalsIgnoreCase("up and down")) knobMode = 1;
+        if (newKnobMode.equalsIgnoreCase("normal")) knobMode = 1; //I'm told vertical is customary ;)
+        if (newKnobMode.equalsIgnoreCase("default")) knobMode = 1; // so here ya go ;)
+        if (newKnobMode.equalsIgnoreCase("horizontal")) knobMode = 2;
+        if (newKnobMode.equalsIgnoreCase("sideways")) knobMode = 2;
+        
         alfInterpolation = 2; //defaults to bicubic 'cloud' interpolation
         if (newInterpolation.equalsIgnoreCase("none")) alfInterpolation = 0;
         if (newInterpolation.equalsIgnoreCase("off")) alfInterpolation = 0;
         if (newInterpolation.equalsIgnoreCase("nearestneighbor")) alfInterpolation = 0;
         if (newInterpolation.equalsIgnoreCase("nearest neighbor")) alfInterpolation = 0; //variations on mondrian-meter
         if (newInterpolation.equalsIgnoreCase("bilinear")) alfInterpolation = 1; //option for softer definition
-        applyTilt = fmax(fmin(newTilt.getFloatValue(),1.0f),0.0f) * 0.5f; //value is 0-1 but in use it's 0-0.5
-    }
+     }
+    int userWidth;
+    int userHeight;
     juce::Colour defaultColour = juce::Colours::lightgrey;
     juce::Image backgroundImage = juce::Image();
     juce::Image blurImage = juce::Image();
@@ -86,6 +112,7 @@ public:
     bool usingNamedImage = false;
     float applyTrackColour = 0.5;
     juce::Colour LEDColour = juce::Colours::red;
+    int knobMode;
     int alfInterpolation;
     float applyTilt = 0.0;
 };

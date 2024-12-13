@@ -24,21 +24,123 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     meter.meterInterpolation = airwindowsLookAndFeel.alfInterpolation;
     addAndMakeVisible(meter);
 
-    HIPKnob.setSliderStyle(juce::Slider::Rotary);
+    if (airwindowsLookAndFeel.knobMode == 0) {
+        HIPKnob.setSliderStyle(juce::Slider::Rotary);
+        LOPKnob.setSliderStyle(juce::Slider::Rotary);
+        AIRKnob.setSliderStyle(juce::Slider::Rotary);
+        FIRKnob.setSliderStyle(juce::Slider::Rotary);
+        STOKnob.setSliderStyle(juce::Slider::Rotary);
+        RNGKnob.setSliderStyle(juce::Slider::Rotary);
+        FCRKnob.setSliderStyle(juce::Slider::Rotary);
+        SCRKnob.setSliderStyle(juce::Slider::Rotary);
+        FCAKnob.setSliderStyle(juce::Slider::Rotary);
+        SCAKnob.setSliderStyle(juce::Slider::Rotary);
+        FCLKnob.setSliderStyle(juce::Slider::Rotary);
+        SCLKnob.setSliderStyle(juce::Slider::Rotary);
+        FGRKnob.setSliderStyle(juce::Slider::Rotary);
+        SGRKnob.setSliderStyle(juce::Slider::Rotary);
+        FGSKnob.setSliderStyle(juce::Slider::Rotary);
+        SGSKnob.setSliderStyle(juce::Slider::Rotary);
+        FGLKnob.setSliderStyle(juce::Slider::Rotary);
+        SGLKnob.setSliderStyle(juce::Slider::Rotary);
+        TRFKnob.setSliderStyle(juce::Slider::Rotary);
+        TRRKnob.setSliderStyle(juce::Slider::Rotary);
+        HMFKnob.setSliderStyle(juce::Slider::Rotary);
+        HMGKnob.setSliderStyle(juce::Slider::Rotary);
+        HMRKnob.setSliderStyle(juce::Slider::Rotary);
+        LMFKnob.setSliderStyle(juce::Slider::Rotary);
+        LMGKnob.setSliderStyle(juce::Slider::Rotary);
+        LMRKnob.setSliderStyle(juce::Slider::Rotary);
+        BSFKnob.setSliderStyle(juce::Slider::Rotary);
+        BSGKnob.setSliderStyle(juce::Slider::Rotary);
+        BSRKnob.setSliderStyle(juce::Slider::Rotary);
+        DSCKnob.setSliderStyle(juce::Slider::Rotary);
+        PANKnob.setSliderStyle(juce::Slider::Rotary);
+        FADKnob.setSliderStyle(juce::Slider::Rotary);
+    }
+
+    if (airwindowsLookAndFeel.knobMode == 1) {
+        HIPKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        LOPKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        AIRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FIRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        STOKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        RNGKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FCRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        SCRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FCAKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        SCAKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FCLKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        SCLKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FGRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        SGRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FGSKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        SGSKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FGLKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        SGLKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        TRFKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        TRRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        HMFKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        HMGKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        HMRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        LMFKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        LMGKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        LMRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        BSFKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        BSGKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        BSRKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        DSCKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        PANKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+        FADKnob.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    }
+
+    if (airwindowsLookAndFeel.knobMode == 2) {
+        HIPKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        LOPKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        AIRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FIRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        STOKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        RNGKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FCRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        SCRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FCAKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        SCAKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FCLKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        SCLKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FGRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        SGRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FGSKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        SGSKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FGLKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        SGLKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        TRFKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        TRRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        HMFKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        HMGKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        HMRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        LMFKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        LMGKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        LMRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        BSFKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        BSGKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        BSRKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        DSCKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        PANKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+        FADKnob.setSliderStyle(juce::Slider::RotaryHorizontalDrag);
+    }
+
     HIPKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     HIPKnob.setRange(0.0f, 1.0f);
     HIPKnob.setValue(processorRef.params[PluginProcessor::KNOBHIP]->get(), juce::NotificationType::dontSendNotification);
     HIPKnob.addListener(this);
     addAndMakeVisible(HIPKnob);
     
-    LOPKnob.setSliderStyle(juce::Slider::Rotary);
     LOPKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     LOPKnob.setRange(0.0f, 1.0f);
     LOPKnob.setValue(processorRef.params[PluginProcessor::KNOBLOP]->get(), juce::NotificationType::dontSendNotification);
     LOPKnob.addListener(this);
     addAndMakeVisible(LOPKnob);
     
-    AIRKnob.setSliderStyle(juce::Slider::Rotary);
     AIRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     AIRKnob.setRange(0.0f, 1.0f);
     AIRKnob.setValue(processorRef.params[PluginProcessor::KNOBAIR]->get(), juce::NotificationType::dontSendNotification);
@@ -46,7 +148,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(AIRKnob);
     AIRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.949f, 0.913f, 0.117f, 1.0f)); //fixed thumb color yellow
 
-    FIRKnob.setSliderStyle(juce::Slider::Rotary);
     FIRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FIRKnob.setRange(0.0f, 1.0f);
     FIRKnob.setValue(processorRef.params[PluginProcessor::KNOBFIR]->get(), juce::NotificationType::dontSendNotification);
@@ -54,7 +155,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(FIRKnob);
     FIRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(1.0f, 0.486f, 0.129f, 1.0f)); //fixed thumb color orange
 
-    STOKnob.setSliderStyle(juce::Slider::Rotary);
     STOKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     STOKnob.setRange(0.0f, 1.0f);
     STOKnob.setValue(processorRef.params[PluginProcessor::KNOBSTO]->get(), juce::NotificationType::dontSendNotification);
@@ -62,7 +162,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(STOKnob);
     STOKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.466f, 0.313f, 0.505f, 1.0f)); //fixed thumb color purple
 
-    RNGKnob.setSliderStyle(juce::Slider::Rotary);
     RNGKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     RNGKnob.setRange(0.0f, 1.0f);
     RNGKnob.setValue(processorRef.params[PluginProcessor::KNOBRNG]->get(), juce::NotificationType::dontSendNotification);
@@ -83,42 +182,36 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     SCTKnob.addListener(this);
     addAndMakeVisible(SCTKnob);
     
-    FCRKnob.setSliderStyle(juce::Slider::Rotary);
     FCRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FCRKnob.setRange(0.0f, 1.0f);
     FCRKnob.setValue(processorRef.params[PluginProcessor::KNOBFCR]->get(), juce::NotificationType::dontSendNotification);
     FCRKnob.addListener(this);
     addAndMakeVisible(FCRKnob);
     
-    SCRKnob.setSliderStyle(juce::Slider::Rotary);
     SCRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     SCRKnob.setRange(0.0f, 1.0f);
     SCRKnob.setValue(processorRef.params[PluginProcessor::KNOBSCR]->get(), juce::NotificationType::dontSendNotification);
     SCRKnob.addListener(this);
     addAndMakeVisible(SCRKnob);
     
-    FCAKnob.setSliderStyle(juce::Slider::Rotary);
     FCAKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FCAKnob.setRange(0.0f, 1.0f);
     FCAKnob.setValue(processorRef.params[PluginProcessor::KNOBFCA]->get(), juce::NotificationType::dontSendNotification);
     FCAKnob.addListener(this);
     addAndMakeVisible(FCAKnob);
     
-    SCAKnob.setSliderStyle(juce::Slider::Rotary);
     SCAKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     SCAKnob.setRange(0.0f, 1.0f);
     SCAKnob.setValue(processorRef.params[PluginProcessor::KNOBSCA]->get(), juce::NotificationType::dontSendNotification);
     SCAKnob.addListener(this);
     addAndMakeVisible(SCAKnob);
     
-    FCLKnob.setSliderStyle(juce::Slider::Rotary);
     FCLKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FCLKnob.setRange(0.0f, 1.0f);
     FCLKnob.setValue(processorRef.params[PluginProcessor::KNOBFCL]->get(), juce::NotificationType::dontSendNotification);
     FCLKnob.addListener(this);
     addAndMakeVisible(FCLKnob);
     
-    SCLKnob.setSliderStyle(juce::Slider::Rotary);
     SCLKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     SCLKnob.setRange(0.0f, 1.0f);
     SCLKnob.setValue(processorRef.params[PluginProcessor::KNOBSCL]->get(), juce::NotificationType::dontSendNotification);
@@ -139,7 +232,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     SGTKnob.addListener(this);
     addAndMakeVisible(SGTKnob);
     
-    FGRKnob.setSliderStyle(juce::Slider::Rotary);
     FGRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FGRKnob.setRange(0.0f, 1.0f);
     FGRKnob.setValue(processorRef.params[PluginProcessor::KNOBFGR]->get(), juce::NotificationType::dontSendNotification);
@@ -147,7 +239,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(FGRKnob);
     FGRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    SGRKnob.setSliderStyle(juce::Slider::Rotary);
     SGRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     SGRKnob.setRange(0.0f, 1.0f);
     SGRKnob.setValue(processorRef.params[PluginProcessor::KNOBSGR]->get(), juce::NotificationType::dontSendNotification);
@@ -155,7 +246,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(SGRKnob);
     SGRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    FGSKnob.setSliderStyle(juce::Slider::Rotary);
     FGSKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FGSKnob.setRange(0.0f, 1.0f);
     FGSKnob.setValue(processorRef.params[PluginProcessor::KNOBFGS]->get(), juce::NotificationType::dontSendNotification);
@@ -163,7 +253,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(FGSKnob);
     FGSKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    SGSKnob.setSliderStyle(juce::Slider::Rotary);
     SGSKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     SGSKnob.setRange(0.0f, 1.0f);
     SGSKnob.setValue(processorRef.params[PluginProcessor::KNOBSGS]->get(), juce::NotificationType::dontSendNotification);
@@ -171,7 +260,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(SGSKnob);
     SGSKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    FGLKnob.setSliderStyle(juce::Slider::Rotary);
     FGLKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FGLKnob.setRange(0.0f, 1.0f);
     FGLKnob.setValue(processorRef.params[PluginProcessor::KNOBFGL]->get(), juce::NotificationType::dontSendNotification);
@@ -179,7 +267,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(FGLKnob);
     FGLKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    SGLKnob.setSliderStyle(juce::Slider::Rotary);
     SGLKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     SGLKnob.setRange(0.0f, 1.0f);
     SGLKnob.setValue(processorRef.params[PluginProcessor::KNOBSGL]->get(), juce::NotificationType::dontSendNotification);
@@ -187,7 +274,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(SGLKnob);
     SGLKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    TRFKnob.setSliderStyle(juce::Slider::Rotary);
     TRFKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     TRFKnob.setRange(0.0f, 1.0f);
     TRFKnob.setValue(processorRef.params[PluginProcessor::KNOBTRF]->get(), juce::NotificationType::dontSendNotification);
@@ -203,7 +289,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(TRGKnob);
     TRGKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.698f, 0.152f, 0.164f, 1.0f)); //fixed thumb color red
 
-    TRRKnob.setSliderStyle(juce::Slider::Rotary);
     TRRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     TRRKnob.setRange(0.0f, 1.0f);
     TRRKnob.setValue(processorRef.params[PluginProcessor::KNOBTRR]->get(), juce::NotificationType::dontSendNotification);
@@ -211,7 +296,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(TRRKnob);
     TRRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.698f, 0.152f, 0.164f, 1.0f)); //fixed thumb color red
 
-    HMFKnob.setSliderStyle(juce::Slider::Rotary);
     HMFKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     HMFKnob.setRange(0.0f, 1.0f);
     HMFKnob.setValue(processorRef.params[PluginProcessor::KNOBHMF]->get(), juce::NotificationType::dontSendNotification);
@@ -219,7 +303,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(HMFKnob);
     HMFKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    HMGKnob.setSliderStyle(juce::Slider::Rotary);
     HMGKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     HMGKnob.setRange(0.0f, 1.0f);
     HMGKnob.setValue(processorRef.params[PluginProcessor::KNOBHMG]->get(), juce::NotificationType::dontSendNotification);
@@ -227,7 +310,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(HMGKnob);
     HMGKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    HMRKnob.setSliderStyle(juce::Slider::Rotary);
     HMRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     HMRKnob.setRange(0.0f, 1.0f);
     HMRKnob.setValue(processorRef.params[PluginProcessor::KNOBHMR]->get(), juce::NotificationType::dontSendNotification);
@@ -235,7 +317,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(HMRKnob);
     HMRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.2f, 0.466f, 0.2f, 1.0f)); //fixed thumb color green
 
-    LMFKnob.setSliderStyle(juce::Slider::Rotary);
     LMFKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     LMFKnob.setRange(0.0f, 1.0f);
     LMFKnob.setValue(processorRef.params[PluginProcessor::KNOBLMF]->get(), juce::NotificationType::dontSendNotification);
@@ -243,7 +324,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(LMFKnob);
     LMFKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.078f, 0.466f, 0.662f, 1.0f)); //fixed thumb color blue
 
-    LMGKnob.setSliderStyle(juce::Slider::Rotary);
     LMGKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     LMGKnob.setRange(0.0f, 1.0f);
     LMGKnob.setValue(processorRef.params[PluginProcessor::KNOBLMG]->get(), juce::NotificationType::dontSendNotification);
@@ -251,7 +331,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(LMGKnob);
     LMGKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.078f, 0.466f, 0.662f, 1.0f)); //fixed thumb color blue
 
-    LMRKnob.setSliderStyle(juce::Slider::Rotary);
     LMRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     LMRKnob.setRange(0.0f, 1.0f);
     LMRKnob.setValue(processorRef.params[PluginProcessor::KNOBLMR]->get(), juce::NotificationType::dontSendNotification);
@@ -259,7 +338,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(LMRKnob);
     LMRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.078f, 0.466f, 0.662f, 1.0f)); //fixed thumb color blue
 
-    BSFKnob.setSliderStyle(juce::Slider::Rotary);
     BSFKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     BSFKnob.setRange(0.0f, 1.0f);
     BSFKnob.setValue(processorRef.params[PluginProcessor::KNOBBSF]->get(), juce::NotificationType::dontSendNotification);
@@ -267,7 +345,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(BSFKnob);
     BSFKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.513f, 0.27f, 0.153f, 1.0f)); //fixed thumb color brown
 
-    BSGKnob.setSliderStyle(juce::Slider::Rotary);
     BSGKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     BSGKnob.setRange(0.0f, 1.0f);
     BSGKnob.setValue(processorRef.params[PluginProcessor::KNOBBSG]->get(), juce::NotificationType::dontSendNotification);
@@ -275,7 +352,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(BSGKnob);
     BSGKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.513f, 0.27f, 0.153f, 1.0f)); //fixed thumb color brown
 
-    BSRKnob.setSliderStyle(juce::Slider::Rotary);
     BSRKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     BSRKnob.setRange(0.0f, 1.0f);
     BSRKnob.setValue(processorRef.params[PluginProcessor::KNOBBSR]->get(), juce::NotificationType::dontSendNotification);
@@ -283,7 +359,6 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(BSRKnob);
     BSRKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.513f, 0.27f, 0.153f, 1.0f)); //fixed thumb color brown
 
-    DSCKnob.setSliderStyle(juce::Slider::Rotary);
     DSCKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     DSCKnob.setRange(0.0f, 1.0f);
     DSCKnob.setValue(processorRef.params[PluginProcessor::KNOBDSC]->get(), juce::NotificationType::dontSendNotification);
@@ -291,21 +366,19 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     addAndMakeVisible(DSCKnob);
     DSCKnob.setColour(juce::Slider::thumbColourId, juce::Colour().fromFloatRGBA(0.698f, 0.152f, 0.164f, 1.0f)); //fixed thumb color red
     
-    PANKnob.setSliderStyle(juce::Slider::Rotary);
     PANKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     PANKnob.setRange(0.0f, 1.0f);
     PANKnob.setValue(processorRef.params[PluginProcessor::KNOBPAN]->get(), juce::NotificationType::dontSendNotification);
     PANKnob.addListener(this);
     addAndMakeVisible(PANKnob);
     
-    FADKnob.setSliderStyle(juce::Slider::Rotary);
     FADKnob.setTextBoxStyle(juce::Slider::NoTextBox, false, 100, 20);
     FADKnob.setRange(0.0f, 1.0f);
     FADKnob.setValue(processorRef.params[PluginProcessor::KNOBFAD]->get(), juce::NotificationType::dontSendNotification);
     FADKnob.addListener(this);
     addAndMakeVisible(FADKnob);
     
-    /*addAndMakeVisible (inspectButton);
+    addAndMakeVisible (inspectButton);
     inspectButton.onClick = [&] {
         if (!inspector)
         {
@@ -313,9 +386,9 @@ PluginEditor::PluginEditor (PluginProcessor& p)
             inspector->onClose = [this]() { inspector.reset(); };
         }
         inspector->setVisible (true);
-    };// this chunk of code instantiates and opens the melatonin inspector*/
+    };// this chunk of code instantiates and opens the melatonin inspector
     
-    setSize (850, 512);
+    setSize (airwindowsLookAndFeel.userWidth, airwindowsLookAndFeel.userHeight);
     // Make sure that before the constructor has finished, you've set the editor's size to whatever you need it to be.
 }
 
@@ -373,549 +446,566 @@ void PluginEditor::resized()
     meter.setBounds(area.getProportion(juce::Rectangle{((float)linewidth*2.0f)/area.getWidth(), (float)(linewidth*2.0f)/area.getHeight(), 1.0f-(((float)linewidth*4.0f)/area.getWidth()), (float)((linewidth*8.0f)/area.getHeight())}));
     inspectButton.setBounds(0, 0, 30, 10);
     area.removeFromTop((int)(linewidth*8.0f)); //remaining area is for controls. getProportion sets first start X and Y placement, then size X and Y placement
-    float smallKnob = 0.4f; float medKnob = 0.5f; float largeKnob = 0.89f; float hugeKnob = 0.98f; float sliderW = 0.98f; float sliderH = 0.3f;
-    //these are knob sizes scaled to the size of the block
     float skew = airwindowsLookAndFeel.applyTilt; //this is the amount of tilt the knobs experience at top and bottom. MAX 0.5 becomes full tilt
     
-    float A1x = 0.06f; float A1y = 0.02f; float A2x = 0.05f; float A3x = 0.55f; float A23y = 0.66f;
-    float B1x = 0.01f; float B1y = 0.2f; float B2x = 0.55f; float B2y = 0.01f; //knobs go large to small, then top to bottom, left to right
-    float C1x = 0.1f; float C1y = 0.3f; float C2x = 0.01f; float C2y = 0.01f; //threshold slider is biggest, gets to be first
+    float lilKnob = 0.34f; float bigKnob = 0.69f;
+    float sliderW = 0.94f; float sliderH = 0.32f; //these are knob sizes scaled to the size of the block
+    
+    float A1x = 0.15f; float A1y = 0.12f; float A2x = 0.06f; float A3x = 0.6f; float A23y = 0.7f; //EQs
+    float B1x = 0.15f; float B1y = 0.34f; float B2x = 0.6f; float B2y = 0.12f; //stone fire fader pan
+    //knobs go large to small, then top to bottom, left to right. threshold slider is biggest, gets to be first
     //###now do the three knob and slider ones. 1 is always the slider, 234y are the same
-    float D1x = 0.01f; float D1y = 0.1f; float D2x = 0.01f; float D3x = 0.33f; float D4x = 0.66f; float D234y = 0.45f;
-    float E1x = 0.01f; float E1y = 0.5f; float E2x = 0.01f; float E3x = 0.33f; float E4x = 0.66f; float E234y = 0.15f;
+    float C1x = 0.05f; float C1y = 0.5f; float C2x = 0.0f; float C3x = 0.3333f; float C4x = 0.6666f; float C234y = 0.12f;
     //these are always the same for all aspect ratios, but panels and offsets are unique to the aspect ratios, as are the sequence of control blocks
     
     if (aspectRatio >= 0.0f && aspectRatio < 0.18f) { //12h-1w
         float pY = (float)area.getHeight()/12.0f; //size of each movable block
         float pX = (float)area.getWidth()/1.0f;
-        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
-        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f; //1 and 2 wide don't have tilted knobs
+        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
+        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
         offsetY = pY; //put between vertical SECTIONS (not knobs)
         FIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         AIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Fire Air B block
+        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Fire Air B block
         offsetY = pY*2.0f; //put between vertical SECTIONS (not knobs)
-        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
+        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
         offsetY = pY*3.0f; //put between vertical SECTIONS (not knobs)
-        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
+        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
         offsetY = pY*4.0f; //put between vertical SECTIONS (not knobs)
         STOKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         RNGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Stone Range B block
+        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Stone Range B block
         offsetY = pY*5.0f; //put between vertical SECTIONS (not knobs)
-        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
+        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
         offsetY = pY*6.0f; //put between vertical SECTIONS (not knobs)
         LOPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HIPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         DSCKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
+        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
         offsetY = pY*7.0f; //put between vertical SECTIONS (not knobs)
         TRGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         TRRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         TRFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Treble Width Freq A block
+        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Treble Width Freq A block
         offsetY = pY*8.0f; //put between vertical SECTIONS (not knobs)
         HMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         HMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //HighMid Width Freq A block
+        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //HighMid Width Freq A block
         offsetY = pY*9.0f; //put between vertical SECTIONS (not knobs)
         LMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         LMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         LMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //LowMid Width Freq A block
+        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //LowMid Width Freq A block
         offsetY = pY*10.0f; //put between vertical SECTIONS (not knobs)
         BSGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         BSRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         BSFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Bass Width Freq A block
+        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Bass Width Freq A block
         offsetY = pY*11.0f; //put between vertical SECTIONS (not knobs)
         FADKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         PANKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Pan Fader C block
+        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Pan Fader C block
     } //12h-1w
     
-    if (aspectRatio >= 0.18f && aspectRatio < 0.72f) { //6h-2w
+    if (aspectRatio >= 0.18f && aspectRatio < 0.7f) { //6h-2w
         float pY = (float)area.getHeight()/6.0f; //size of each movable block
         float pX = (float)area.getWidth()/2.0f;
-        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f-skew; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
-        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f; //1 and 2 wide don't have angled knobs
+        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
+        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         TRGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         TRRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         TRFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Treble Width Freq A block
+        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Treble Width Freq A block
         
-        offsetY = pY; offsetX = 0.0f; panelTilt = 0.5f-(skew*0.5f); //put between vertical SECTIONS (not knobs)
+        offsetY = pY; offsetX = 0.0f; //put between vertical SECTIONS (not knobs)
         FIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
+        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         AIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Fire Air B block
+        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Fire Air B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         HMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
+        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
+        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         HMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //HighMid Width Freq A block
+        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //HighMid Width Freq A block
 
-        offsetY = pY*2.0f; offsetX = 0.0f; panelTilt = 0.5f-(skew*0.125f); //put between vertical SECTIONS (not knobs)
-        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        offsetY = pY*1.99f; offsetX = 0.0f; //put between vertical SECTIONS (not knobs)
+        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
+        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         LMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         LMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //LowMid Width Freq A block
+        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //LowMid Width Freq A block
  
-        offsetY = pY*3.0f; offsetX = 0.0f; panelTilt = 0.5f+(skew*0.125f); //put between vertical SECTIONS (not knobs)
-        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        offsetY = pY*2.98f; offsetX = 0.0f; //put between vertical SECTIONS (not knobs)
+        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
+        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         BSGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         BSRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         BSFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //Bass Width Freq A block
+        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Bass Width Freq A block
 
-        offsetY = pY*4.0f; offsetX = 0.0f; panelTilt = 0.5f+(skew*0.5f); //put between vertical SECTIONS (not knobs)
+        offsetY = pY*3.97f; offsetX = 0.0f; //put between vertical SECTIONS (not knobs)
         STOKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
+        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         RNGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Stone Range B block
+        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Stone Range B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LOPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
+        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HIPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
+        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         DSCKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Lowpass Highpass Discontinuity A block
+        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
 
-        offsetY = pY*5.0f; offsetX = 0.0f; panelTilt = 0.5f+skew; //put between vertical SECTIONS (not knobs)
-        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        offsetY = pY*4.96f; offsetX = 0.0f; //put between vertical SECTIONS (not knobs)
+        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
+        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FADKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         PANKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Pan Fader C block
+        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Pan Fader C block
     } //6h-2w
 
-    if (aspectRatio >= 0.72f && aspectRatio < 1.4f) { //4h-3w
-        float pY = (float)area.getHeight()/4.0f; //size of each movable block
+    if (aspectRatio >= 0.7f && aspectRatio < 1.2f) { //4h-3w
         float pX = (float)area.getWidth()/3.0f;
-        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f-skew; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
+        float offsetX = 0.0f; float panelTilt = 0.5f-skew; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
+        float pY = (float)(area.getHeight()/4.0f);
+        float offsetY = 0.0f;
+        pY -= (pY*skew*0.4f); //top panel is smaller
         TRGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         TRRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         TRFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Treble Width Freq A block
+        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Treble Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         SCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
+        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         FCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         FCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         FCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
+        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
         
-        offsetY = (pY-(skew*0.5f)); offsetX = 0.0f; panelTilt = 0.5f-(skew*0.25f); //put between vertical SECTIONS (not knobs)
+        pY = (float)area.getHeight()/4.0f;
+        offsetY = (pY-(pY*skew*1.0f)); offsetX = 0.0f; panelTilt = 0.5f-(skew*0.75f); //put between vertical SECTIONS (not knobs)
+        pY += (pY*skew*1.1f); //center panels are larger
         HMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         HMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         HMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //HighMid Width Freq A block
+        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //HighMid Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         STOKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         RNGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //Stone Range B block
+        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Stone Range B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         AIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //Fire Air B block
+        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Fire Air B block
 
-        offsetY = (pY*2.0f); offsetX = 0.0f; panelTilt = 0.5f+(skew*0.25f); //put between vertical SECTIONS (not knobs)
+        pY = (float)area.getHeight()/4.0f;
+        offsetY = ((pY*1.99f)-(pY*skew*0.384f)); offsetX = 0.0f; panelTilt = 0.5f+(skew*0.75f); //put between vertical SECTIONS (not knobs)
+        pY += (pY*skew*1.1f); //center panels are larger
         LMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         LMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         LMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //LowMid Width Freq A block
+        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //LowMid Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         SGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
+        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         FGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         FGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()}));
+        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         FGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.125f)))/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
+        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
         
-        offsetY = (pY*3.0f)+(skew*0.5f); offsetX = 0.0f; panelTilt = 0.5f+skew; //put between vertical SECTIONS (not knobs)
+        pY = (float)area.getHeight()/4.0f;
+        offsetY = (pY*2.98f)+(pY*skew*0.5f); offsetX = 0.0f; panelTilt = 0.5f+skew; //put between vertical SECTIONS (not knobs)
+        pY -= (pY*skew*0.4f); //bottom panel is smaller
         BSGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         BSRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         BSFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Bass Width Freq A block
+        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Bass Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LOPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         HIPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         DSCKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Lowpass Highpass Discontinuity A block
+        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Lowpass Highpass Discontinuity A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FADKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         PANKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Pan Fader C block
+        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Pan Fader C block
     } //4h-3w
     
-    if (aspectRatio >= 1.4f && aspectRatio < 3.0f) { //3h-4w
-        float pY = (float)area.getHeight()/3.0f; //size of each movable block
+    if (aspectRatio >= 1.2f && aspectRatio < 3.0f) { //3h-4w
         float pX = (float)area.getWidth()/4.0f;
-        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f-skew; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
+        float offsetX = 0.0f; float panelTilt = 0.5f-skew; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
+        float offsetY = 0.0f;
+        float pY = (float)area.getHeight()/3.0f; //size of each movable block
+        pY -= (pY*skew*0.33f); //top panel is smaller
+        
         BSGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         BSRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         BSFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Bass Width Freq A block
+        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Bass Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         LMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         LMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //LowMid Width Freq A block
+        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //LowMid Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         HMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         HMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         HMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //HighMid Width Freq A block
+        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //HighMid Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         TRGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         TRRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         TRFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Treble Width Freq A block
+        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Treble Width Freq A block
         
-        offsetY = pY-(skew*0.5f); offsetX = 0.0f; panelTilt = 0.5f; //put between vertical SECTIONS (not knobs)
-        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        pY = (float)area.getHeight()/3.0f;
+        offsetY = pY-(pY*skew*0.6f); offsetX = 0.0f; panelTilt = 0.5f; //put between vertical SECTIONS (not knobs)
+        pY += (pY*skew*0.95f); //middle panel is larger
+        
+        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         FCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
+        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         AIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Fire Air B block
+        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Fire Air B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         FGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
+        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LOPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HIPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         DSCKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
+        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
         
-        offsetY = (pY*2.0f)+(skew*0.5f); offsetX = 0.0f; panelTilt = 0.5f+skew; //put between vertical SECTIONS (not knobs)
-        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        pY = (float)area.getHeight()/3.0f;
+        offsetY = (pY*2.0f)+(pY*skew*0.33f); offsetX = 0.0f; panelTilt = 0.5f+skew; //put between vertical SECTIONS (not knobs)
+        pY -= (pY*skew*0.33f); //bottom panel is smaller
+        
+        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         SCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
+        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         STOKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         RNGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Stone Range B block
+        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Stone Range B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), ((float)(area.getHeight()/4.0f)*sliderH)/area.getHeight()}));
         SGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         SGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
+        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FADKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.5f)))/area.getHeight()}));
+        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob*(1.0f-(skew*0.25f)))/area.getHeight()}));
         PANKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.5f)))/area.getHeight()})); //Pan Fader C block
+        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob*(1.0f-(skew*0.25f)))/area.getHeight()})); //Pan Fader C block
     } //3h-4w
 
-    if (aspectRatio >= 3.0f && aspectRatio < 12.0f) { //2h-6w
+    if (aspectRatio >= 3.0f && aspectRatio < 5.0f) { //2h-6w
         float pY = (float)area.getHeight()/2.0f; //size of each movable block
         float pX = (float)area.getWidth()/6.0f;
-        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f-(skew*0.66f); //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
-        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f; //2 or 1 high don't have tilted knobs
+        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
+        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         STOKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         RNGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //Stone Range B block
+        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Stone Range B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
+        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
+        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         AIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //Fire Air B block
+        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Fire Air B block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
-        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
+        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
 
-        offsetY = pY; offsetX = 0.0f; panelTilt = 0.5f+(skew*0.66f); //put between vertical SECTIONS (not knobs)
+        offsetY = (pY*0.9f); offsetX = 0.0f; //put between vertical SECTIONS (not knobs)
         BSGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         BSRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         BSFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //Bass Width Freq A block
+        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Bass Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         LMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         LMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //LowMid Width Freq A block
+        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //LowMid Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         HMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         HMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //HighMid Width Freq A block
+        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //HighMid Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         TRGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         TRRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         TRFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //Treble Width Freq A block
+        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Treble Width Freq A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         LOPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HIPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         DSCKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //Lowpass Highpass Discontinuity A block
+        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
         offsetX += pX; //put between horizontal SECTIONS (not knobs)
         FADKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob*(1.0f-(skew*0.375f)))/area.getHeight()}));
+        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         PANKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob*(1.0f-(skew*0.375f)))/area.getHeight()})); //Pan Fader C block
+        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Pan Fader C block
      } //2h-6w
     
-    if (aspectRatio >= 12.0f && aspectRatio < 999.0f) { //1h-12w
+    if (aspectRatio >= 5.0f && aspectRatio < 999999.0f) { //1h-12w
         float pY = (float)area.getHeight()/1.0f; //size of each movable block
         float pX = (float)area.getWidth()/12.0f;
         float offsetY = 0.0f; float offsetX = 0.0f; float panelTilt = 0.5f; //update the new panel tilt each time offsetY is updated. 0.0 is top panel, seen from underneath. 1.0 is bottom panel, seen from above
-        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        FCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
+        FCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireComp Thresh Ratio Attack Release D block
         offsetX = pX; //put between vertical SECTIONS (not knobs)
         FIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        FIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         AIRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Fire Air B block
+        AIRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Fire Air B block
         offsetX = pX*2.0f; //put between vertical SECTIONS (not knobs)
-        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        FGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         FGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        FGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         FGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
+        FGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //FireGate Thresh Ratio Sustain Release E block
         offsetX = pX*3.0f; //put between vertical SECTIONS (not knobs)
-        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D1x))/area.getWidth(), (offsetY+(pY*D1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        SCTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SCRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D2x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SCRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCAKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D3x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SCAKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SCLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*D4x))/area.getWidth(), (offsetY+(pY*D234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
+        SCLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneComp Thresh Ratio Attack Release D block
         offsetX = pX*4.0f; //put between vertical SECTIONS (not knobs)
         STOKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        STOKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         RNGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Stone Range B block
+        RNGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Stone Range B block
         offsetX = pX*5.0f; //put between vertical SECTIONS (not knobs)
-        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E1x))/area.getWidth(), (offsetY+(pY*E1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
+        SGTKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*sliderW)/area.getWidth(), (pY*sliderH)/area.getHeight()}));
         SGRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E2x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SGRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGSKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E3x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        SGSKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C3x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         SGLKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*E4x))/area.getWidth(), (offsetY+(pY*E234y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
+        SGLKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C4x))/area.getWidth(), (offsetY+(pY*C234y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //StoneGate Thresh Ratio Sustain Release E block
         offsetX = pX*6.0f; //put between vertical SECTIONS (not knobs)
         LOPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        LOPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HIPKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        HIPKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         DSCKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
+        DSCKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Lowpass Highpass Discontinuity A block
         offsetX = pX*7.0f; //put between vertical SECTIONS (not knobs)
         TRGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        TRGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         TRRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        TRRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         TRFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Treble Width Freq A block
+        TRFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Treble Width Freq A block
         offsetX = pX*8.0f; //put between vertical SECTIONS (not knobs)
         HMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        HMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         HMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        HMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         HMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //HighMid Width Freq A block
+        HMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //HighMid Width Freq A block
         offsetX = pX*9.0f; //put between vertical SECTIONS (not knobs)
         LMGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        LMGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         LMRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        LMRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         LMFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //LowMid Width Freq A block
+        LMFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //LowMid Width Freq A block
         offsetX = pX*10.0f; //put between vertical SECTIONS (not knobs)
         BSGKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*largeKnob)/area.getWidth(), (pY*largeKnob)/area.getHeight()}));
+        BSGKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A1x))/area.getWidth(), (offsetY+(pY*A1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         BSRKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()}));
+        BSRKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A2x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()}));
         BSFKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*smallKnob)/area.getWidth(), (pY*smallKnob)/area.getHeight()})); //Bass Width Freq A block
+        BSFKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*A3x))/area.getWidth(), (offsetY+(pY*A23y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Bass Width Freq A block
         offsetX = pX*11.0f; //put between vertical SECTIONS (not knobs)
         FADKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C1x))/area.getWidth(), (offsetY+(pY*C1y))/area.getHeight(), (pX*hugeKnob)/area.getWidth(), (pY*hugeKnob)/area.getHeight()}));
+        FADKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B1x))/area.getWidth(), (offsetY+(pY*B1y))/area.getHeight(), (pX*bigKnob)/area.getWidth(), (pY*bigKnob)/area.getHeight()}));
         PANKnob.setColour(juce::Slider::backgroundColourId, juce::Colour().fromFloatRGBA(panelTilt, 0.0f, 0.0f, 1.0f));
-        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*C2x))/area.getWidth(), (offsetY+(pY*C2y))/area.getHeight(), (pX*medKnob)/area.getWidth(), (pY*medKnob)/area.getHeight()})); //Pan Fader C block
+        PANKnob.setBounds(area.getProportion(juce::Rectangle{(offsetX+(pX*B2x))/area.getWidth(), (offsetY+(pY*B2y))/area.getHeight(), (pX*lilKnob)/area.getWidth(), (pY*lilKnob)/area.getHeight()})); //Pan Fader C block
     } //1h-12w
 
 }
